@@ -25,3 +25,5 @@ Route::get('/profile', 'UserController@index')->name('profile');
 Route::post('/profile/update-gender', 'UserController@updateGender')->name('update-gender');
 
 
+Route::resource('posts', 'PostController')->middleware('checkGender');
+Route::resource('comments', 'CommentController')->middleware('checkGender');
