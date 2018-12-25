@@ -20,10 +20,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
     //   User Frontend
-Route::get('/profile', 'UserController@index')->name('profile');
+Route::get('/profile', 'UserController@index')->name('profile')->middleware('auth');
 
 Route::post('/profile/update-gender', 'UserController@updateGender')->name('update-gender');
 
 
+Route::get('/posts/delete/{id}', 'PostController@delete')->name('deletePost');
+
 Route::resource('posts', 'PostController')->middleware('checkGender');
 Route::resource('comments', 'CommentController')->middleware('checkGender');
+
+
+
+Route::get('auth/facebook', 'Auth\FacebookController@redirectToFacebook');
+Route::get('auth/facebook/callback', 'Auth\FacebookController@handleFacebookCallback');

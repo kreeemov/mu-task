@@ -40,4 +40,12 @@ return [
         ],
     ],
 
+
+    'facebook' => [
+        'client_id' => '526485874517021',
+        'client_secret' => '57826c3e4542d79646e0d3b1bf59d190',
+        'redirect' => 'http://mu-task.test/auth/facebook/callback',
+    ],
+
+
 ];

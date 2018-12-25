@@ -16,26 +16,27 @@
                     <h1 class="card-header">{{$post->title}}</h1>
                     <div class="card-body">
                         {!! $post->body !!}
+                        <br>
+                        <hr>
+                        @if($post->user_id == Auth::user()->id)
+                            <div class="actions-body">
+                                <h5>Actions:</h5>
+                                <div class="float-left">
+                                    <a href="{{route('posts.edit', ['id' => $post->id])}}" class="btn btn-primary">Edit</a>
+                                </div>
+                                <div class="float-left">
+                                    <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="post">
+                                        @csrf
+                                        @method("delete")
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                                <div class="float-left"></div>
+                            </div>
+                        @endif
                     </div>
                 </div>
-                @if($post->user_id == Auth::user()->id)
-                    <div class="actions-body">
-                        <h5>Actions:</h5>
-                        <div class="float-left">
-                            <a href="{{route('posts.edit', ['id' => $post->id])}}" class="btn btn-primary">Edit</a>
-                        </div>
-                        <div class="float-left">
-                            <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="post">
-                                @csrf
-                                @method("delete")
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                        <div class="float-left"></div>
-                    </div>
-                @else
 
-                @endif
 
                     <div class="card">
                         <div class="card-header">Comments</div>

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('gender')->nullable()->comment("1 for male 0 for female");
+            $table->string('facebook_id');
             $table->rememberToken();
             $table->timestamps();
         });
